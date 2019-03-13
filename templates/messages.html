@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+    Message
+{% endblock %}
+
+{% block content %}
+    <hr>
+    {% for message in messages %}
+        <div class="message">
+            <p>Id:
+                <a href = "/message/{{message.id}}"> {{message.id}} </a>
+            </p>
+            <p>Title: <br> {{message.title}}</p>
+            <p>Content: <br> {{message.content}}</p>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

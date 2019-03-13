@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Message {% endblock %}
+
+{% block content %}
+<h1>Message:</h1>
+{% if message %}
+<h1>{{message.title}}</h1>
+<p>{{message.content}}</p>
+
+{% else %}
+<h1>No such message</h1>
+
+{% endif %}
+{% endblock %}

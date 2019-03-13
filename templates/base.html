@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>{% block title %} - KoNotek{% endblock %}</title>
+    {% endblock %}
+</head>
+<body>
+
+<div id="content">{% block content %}{% endblock %}</div>
+
+<div id="footer">
+    {% block footer %}
+        {% include "footer.html" %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
