@@ -6,6 +6,7 @@
 {% if message %}
 <h1>{{message.title}}</h1>
 <p>{{message.content}}</p>
+<p><form action="{{message.id}}" method="POST"><input type="submit" value="Delete"></form></p>
 
 {% else %}
 <h1>No such message</h1>

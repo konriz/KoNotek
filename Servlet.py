@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, url_for, redirect
 
-from messaging import Message
-from persistence import close_connection, add_message, init_db, clean_db, get_messages, get_message
+from flask import Flask, render_template, request, url_for, redirect, flash
+
+import message_saver
+from messaging import *
+from persistence import init_db, clean_db, close_connection
 
 app = Flask(__name__)
+app.secret_key = b'secret'
 
 
 @app.before_first_request
@@ -40,8 +43,10 @@ def new_message():
     return render_template('new_message.html')
 
 
-@app.route('/message/<id>')
+@app.route('/message/<id>', methods=['GET', 'POST'])
 def show_message(id=None):
+    if request.method == 'POST':
+        delete_message(id)
     message = get_message(id)
     return render_template('message.html', message=message)
 
@@ -50,6 +55,23 @@ def show_message(id=None):
 def list_messages():
     messages = get_messages()
     return render_template('messages.html', messages=messages)
+
+
+@app.route('/log', methods=['GET', 'POST'])
+def log():
+    if request.method == 'POST':
+        flash(message_saver.add_log(request.form['log']))
+    else:
+        message = request.args.get('msg', '')
+        if len(message) > 0:
+            flash(message_saver.add_log(message))
+    return render_template('logs.html', logs=message_saver.read_log())
+
+
+@app.route('/log/clean')
+def clean_log():
+    flash(message_saver.clean_log())
+    return redirect(url_for('log'))
 
 
 @app.errorhandler(404)
