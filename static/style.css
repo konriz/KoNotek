@@ -1,0 +1,35 @@
+#header {
+    background-color: grey;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+#header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header li {
+    float: left;
+    border-right: 1px solid white;
+}
+
+#header a:link, #header a:visited {
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+}
+
+#header a:hover {
+    background-color: white;
+}
+
+#footer {
+    background-color: grey;
+    overflow: hidden;
+    margin-top: 1em;
+    padding: 1em;
+}

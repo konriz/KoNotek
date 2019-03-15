@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}
-    Message
-{% endblock %}
-
+{% block title %}Messages {% endblock %}
 {% block content %}
+    <div>
+        <a href="/message">New message</a>
+    </div>
     <hr>
     {% for message in messages %}
         <div class="message">
