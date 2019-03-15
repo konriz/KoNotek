@@ -3,6 +3,12 @@ from flask import render_template, redirect, url_for, request
 from messages_dao import *
 
 
+@app.route('/messages')
+def list_messages():
+    messages = get_messages()
+    return render_template('messages/messages.html', messages=messages)
+
+
 @app.route('/message', methods=['GET', 'POST'])
 def new_message():
     if request.method == 'POST':
@@ -19,9 +25,3 @@ def show_message(id=None):
         delete_message(id)
     message = get_message(id)
     return render_template('messages/message.html', message=message)
-
-
-@app.route('/messages')
-def list_messages():
-    messages = get_messages()
-    return render_template('messages/messages.html', messages=messages)

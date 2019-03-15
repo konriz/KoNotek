@@ -2,6 +2,16 @@
 {% block title %}Blog {% endblock %}
 {% block content %}
     <div>
-        Blog
+        <h1>Blog</h1>
     </div>
+
+<div class="blog_post_list">
+    {% for blog_post in blog_posts %}
+    <div class="blog_post">
+        {% include "blog/blog_post.html" %}
+    </div>
+</div>
+{% endfor %}
+
+
 {% endblock %}
