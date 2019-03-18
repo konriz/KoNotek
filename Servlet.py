@@ -1,17 +1,17 @@
 from flask import Flask, render_template
 from flask_flatpages import FlatPages, pygments_style_defs
 
-from persistence import init_db, close_connection
+from modules.persistence.sqlite_connector import init_db, close_connection
 
 app = Flask(__name__)
 app.config.from_pyfile('config')
 
 pages = FlatPages(app)
 
-import blog_view
-import admin_view
-import messages_view
-import log_view
+import modules.blog.blog_view
+import modules.admin.admin_view
+import modules.messages.messages_view
+import modules.log.log_view
 
 
 @app.before_first_request

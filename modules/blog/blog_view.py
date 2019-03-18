@@ -1,7 +1,7 @@
 from Servlet import app
 from flask import render_template
 
-from blog_dao import get_blog_posts, get_blog_post
+from modules.blog.blog_dao import get_blog_posts, get_blog_post
 
 
 @app.route('/blog')

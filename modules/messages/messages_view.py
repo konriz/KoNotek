@@ -1,6 +1,6 @@
 from Servlet import app
 from flask import render_template, redirect, url_for, request
-from messages_dao import *
+from modules.messages.messages_dao import *
 
 
 @app.route('/messages')

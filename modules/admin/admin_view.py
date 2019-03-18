@@ -1,6 +1,6 @@
 from Servlet import app
 from flask import render_template, redirect, url_for
-from persistence import clean_db, init_db
+from modules.persistence.sqlite_connector import clean_db, init_db
 
 
 @app.route('/admin')
