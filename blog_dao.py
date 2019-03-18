@@ -1,4 +1,5 @@
 from datetime import datetime
+from Servlet import pages
 
 
 class BlogPost:
@@ -9,6 +10,10 @@ class BlogPost:
 
 
 def get_blog_posts():
-    # TODO get this from markup files
-    blog_posts = [BlogPost(title="Hi", content="Hi"), BlogPost(title="Ho", content="Ho")]
+    blog_posts = (p for p in pages if 'published' in p.meta)
     return blog_posts
+
+
+def get_blog_post(title):
+    blog_post = pages.get_or_404(title)
+    return blog_post

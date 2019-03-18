@@ -8,7 +8,19 @@
 <div class="blog_post_list">
     {% for blog_post in blog_posts %}
     <div class="blog_post">
-        {% include "blog/blog_post.html" %}
+        <a href="/blog/{{blog_post.title}}">
+        <div class="post_date">
+            {{ blog_post.published }}
+        </div>
+
+        <div class="post_title">
+            {{ blog_post.title }}
+        </div>
+
+        <div class="post_description">
+            {{ blog_post.description }}
+        </div>
+        </a>
     </div>
 </div>
 {% endfor %}

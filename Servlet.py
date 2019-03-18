@@ -1,9 +1,12 @@
 from flask import Flask, render_template
+from flask_flatpages import FlatPages, pygments_style_defs
 
 from persistence import init_db, close_connection
 
 app = Flask(__name__)
-app.secret_key = b'secret'
+app.config.from_pyfile('config')
+
+pages = FlatPages(app)
 
 import blog_view
 import admin_view
@@ -20,6 +23,11 @@ def init_database():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/pygments.css')
+def pygmens_css():
+    return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}
 
 
 @app.errorhandler(404)
