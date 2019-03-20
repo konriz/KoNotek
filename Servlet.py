@@ -27,6 +27,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/experiments/')
+def experiments():
+    return render_template('experiments.html')
+
+
 @app.route('/pygments.css')
 def pygmens_css():
     return pygments_style_defs('tango'), 200, {'Content-Type': 'text/css'}

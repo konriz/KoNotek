@@ -1,29 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Blog {% endblock %}
 {% block content %}
-    <div>
-        <h1>Blog</h1>
-    </div>
 
-<div class="blog_post_list">
+<div class="list-group">
     {% for blog_post in blog_posts %}
-    <div class="blog_post">
-        <a href="/blog/{{blog_post.title}}">
-            <div class="post_header">
-                <div class="post_date">
-                    {{ blog_post.published }}
-                </div>
-                <div class="post_title">
-                    {{ blog_post.title }}
-                </div>
+        <a href="/blog/{{blog_post.title}}" class="list-group-item list-group-item-action">
+            {% include "/blog/post_header.html" %}
+            <div class="post_description">
+                {{ blog_post.description }}
             </div>
-        <div class="post_description">
-            {{ blog_post.description }}
-        </div>
         </a>
-    </div>
+    {% endfor %}
 </div>
-{% endfor %}
-
 
 {% endblock %}
