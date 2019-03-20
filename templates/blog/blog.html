@@ -9,14 +9,14 @@
     {% for blog_post in blog_posts %}
     <div class="blog_post">
         <a href="/blog/{{blog_post.title}}">
-        <div class="post_date">
-            {{ blog_post.published }}
-        </div>
-
-        <div class="post_title">
-            {{ blog_post.title }}
-        </div>
-
+            <div class="post_header">
+                <div class="post_date">
+                    {{ blog_post.published }}
+                </div>
+                <div class="post_title">
+                    {{ blog_post.title }}
+                </div>
+            </div>
         <div class="post_description">
             {{ blog_post.description }}
         </div>

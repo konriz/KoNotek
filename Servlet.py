@@ -11,6 +11,8 @@ pages = FlatPages(app)
 import modules.blog.blog_view
 import modules.admin.admin_view
 import modules.messages.messages_view
+
+# FIXME logs not working with heroku
 # import modules.log.log_view
 
 

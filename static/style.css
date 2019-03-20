@@ -1,3 +1,7 @@
+body {
+    margin: 2em;
+}
+
 #header {
     background-color: #b0b0b0;
     overflow: hidden;
@@ -27,11 +31,27 @@
     background-color: white;
 }
 
+#content {
+    margin: 1em;
+}
+
 #footer {
+    font-size: small;
+    display: flex;
     background-color: #b0b0b0;
     overflow: hidden;
     margin-top: 1em;
     padding: 1em;
+}
+
+#mail {
+
+}
+
+#copyright {
+    float: right;
+    text-align: right;
+    width: 90%;
 }
 
 .blog_post {
@@ -48,13 +68,18 @@
     background-color: #e2e2e2;
 }
 
+.post_header {
+    display: flex;
+}
+
 .post_date {
     font-size: small;
 }
 
 .post_title {
-    font-size: large;
+    font-size: small;
     font-weight: bold;
+    margin-left: 1em;
 }
 
 .post_description {
