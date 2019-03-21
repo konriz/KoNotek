@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Blog {% endblock %}
-{% block content %}
 
+{% block content_header %}
+Blog:
+{% endblock %}
+
+{% block content %}
 <div class="list-group">
     {% for blog_post in blog_posts %}
         <a href="/blog/{{blog_post.title}}" class="list-group-item list-group-item-action">

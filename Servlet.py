@@ -11,9 +11,7 @@ pages = FlatPages(app)
 import modules.blog.blog_view
 import modules.admin.admin_view
 import modules.messages.messages_view
-
-# FIXME logs not working with heroku
-# import modules.log.log_view
+import modules.js.js_view
 
 
 @app.before_first_request
@@ -30,6 +28,11 @@ def index():
 @app.route('/experiments/')
 def experiments():
     return render_template('experiments.html')
+
+
+@app.route('/redirect')
+def redirect():
+    return render_template('redirect.html')
 
 
 @app.route('/pygments.css')
