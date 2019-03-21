@@ -10,7 +10,7 @@ pages = FlatPages(app)
 
 import modules.blog.blog_view
 import modules.admin.admin_view
-import modules.messages.messages_view
+import modules.notes.notes_view
 import modules.js.js_view
 
 
@@ -28,11 +28,6 @@ def index():
 @app.route('/experiments/')
 def experiments():
     return render_template('experiments.html')
-
-
-@app.route('/redirect')
-def redirect():
-    return render_template('redirect.html')
 
 
 @app.route('/pygments.css')

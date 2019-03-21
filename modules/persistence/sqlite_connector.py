@@ -5,8 +5,9 @@ from flask import g
 
 DATABASE = 'database.db'
 INIT_QUERY = """
-    CREATE TABLE IF NOT EXISTS messages (
+    CREATE TABLE IF NOT EXISTS notes (
     id integer PRIMARY KEY,
+    date text NOT NULL,
     title text NOT NULL,
     content text
     );

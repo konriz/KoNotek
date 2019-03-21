@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} New message {% endblock %}
+
+{% block content %}
+    <h1>Message:</h1>
+{% if note %}
+    <h1>{{note.title}}</h1>
+    <p>{{note.content}}</p>
+    <p><form action="{{note.id}}" method="POST"><input class="btn btn-primary" type="submit" value="Delete"></form></p>
+{% else %}
+    <h1>No such message</h1>
+{% endif %}
+
+{% endblock %}

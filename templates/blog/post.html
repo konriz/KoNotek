@@ -2,19 +2,11 @@
 {% block title %}{{post.title}} {% endblock %}
 
 {% block content %}
-
     <div class="post_header">
-        <div class="post_date">
-            {{ post.published }}
-        </div>
-
-        <div class="post_title">
-            {{ post.title }}
-        </div>
+            {{ post.published }} // {{ post.title }}
     </div>
 
     <div class="post_content">
         {{ post }}
     </div>
-
 {% endblock %}
