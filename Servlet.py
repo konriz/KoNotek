@@ -11,8 +11,9 @@ pages = FlatPages(app)
 import modules.blog.blog_view
 import modules.admin.admin_view
 import modules.notes.notes_view
+import modules.experiments.experiments_view
 import modules.js.js_view
-
+import modules.morse.morse_view
 
 @app.before_first_request
 def init_database():
@@ -23,11 +24,6 @@ def init_database():
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
-@app.route('/experiments/')
-def experiments():
-    return render_template('experiments.html')
 
 
 @app.route('/pygments.css')

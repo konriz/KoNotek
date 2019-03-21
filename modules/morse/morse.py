@@ -37,8 +37,9 @@ SIGN_TO_MORSE = {
     '8': '---..',
     '9': '----.',
     '': '/',
-    ' ': '//',
-    '.': '///'
+    ' ': '*',
+    ',': '--..--',
+    '.': '.-.-.-'
 }
 
 
@@ -56,7 +57,7 @@ def convert_string_to_morse(message):
     morse = []
     for letter in message.lower():
         morse.append(SIGN_TO_MORSE[letter])
-        if letter != ' ' and letter != '.':
+        if letter != '.':
             morse.append(SIGN_TO_MORSE[''])
     return ''.join(morse)
 
