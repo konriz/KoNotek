@@ -66,13 +66,21 @@ def convert_morse_to_string(message):
     string = []
     signs = message.split('/')
     for letter in signs:
-        if letter == '/' or letter == '':
-            letter = ''.join([letter, '//'])
+        if letter == '':
+            letter = ''.join([letter, '/'])
         string.append(MORSE_TO_SIGN[letter])
     return ''.join(string)
 
 
-test = convert_string_to_morse('Hello world.')
-print(test)
-retest = convert_morse_to_string(test)
-print(retest)
+def translate(mode, input):
+    output = ''
+    try:
+        if mode == 'to_code':
+            output = convert_string_to_morse(input)
+        elif mode == 'to_letters':
+            output = convert_morse_to_string(input)
+        else:
+            raise Exception("Wrong mode")
+    except KeyError as e:
+        output = f"Sign {e} not valid"
+    return output
