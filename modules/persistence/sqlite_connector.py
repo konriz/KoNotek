@@ -62,7 +62,7 @@ def execute_query_with_params(query, params):
         cursor = get_db().cursor()
         cursor.execute(query, params)
         get_db().commit()
-        print(f'Executing {query} with {params}')
+        print('Executing {query} with {params}'.format(query=query, params=params))
     except sqlite3.Error as e:
         print(e)
 

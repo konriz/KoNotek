@@ -1,3 +1,4 @@
+from modules.morse.generator import Writer
 
 SIGN_TO_MORSE = {
     'a': '.-',
@@ -82,5 +83,10 @@ def translate(mode, input):
         else:
             raise Exception("Wrong mode")
     except KeyError as e:
-        output = f"Sign {e} not valid"
+        output = "Sign {e} not valid".format(e=e)
     return output
+
+
+def convert_morse_to_audio(message):
+    writer = Writer(file_name="Hello.wav")
+    writer.write_morse_wav(message)
