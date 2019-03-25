@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Logs {% endblock %}
+{% block content_header %}
+Logs
+{% endblock %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/log" method="post">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" name="log" autocomplete="off">
+            </div>
+            <div class="col">
+                <input type="submit" class="btn btn-primary" value="Log">
+            </div>
+        </div>
+    </form>
+
+    <a href="/log/clean" class="btn btn-danger my-4">Clean</a>
+
+    <div class="list-group">
+    {% for log in logs %}
+        <div class="list-group-item">
+            {{ log }}
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -5,23 +5,38 @@
 Morse code translator
 {% endblock %}
 {% block content %}
-<form id="morse_form" action="" method="post">
 
+<p class="text-muted">Translate 'text to morse' or 'morse to text'. Wave generation working only after text -> morse conversion.</p>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="list-group mb-4">
+            {% for message in messages %}
+                <li class="list-group-item">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+
+<form id="input_form" action="" method="post">
     <div class="btn-group btn-group-toggle mb-3" data-toogle="buttons">
         <label class="btn btn-primary">
             <input type="radio" name="mode" id="to_code" value="to_code" checked> Letters -> Code
         </label>
-
         <label class="btn btn-primary">
             <input type="radio" name="mode" id="to_letters" value="to_letters"> Code -> Letters
         </label>
     </div>
-
     <textarea class="form-control mb-3" id="input" name="input">{{ message.input }}</textarea>
     <input class="btn btn-primary mb-3" type="submit" value="Translate">
 </form>
+<form id="output_form" action="/morse/wave" method="post">
+    <textarea class="form-control" id="output" name="output">{{ message.output }}</textarea>
+    <input class="btn btn-primary mt-3" type="submit" value="Generate Wave">
+</form>
 
-<textarea class="form-control" id="output" name="output">{{ message.output }}</textarea>
+
 
 <script src="/static/morse.js"></script>
 

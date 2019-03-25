@@ -14,6 +14,8 @@ import modules.notes.notes_view
 import modules.experiments.experiments_view
 import modules.js.js_view
 import modules.morse.morse_view
+import modules.log.log_view
+
 
 @app.before_first_request
 def init_database():

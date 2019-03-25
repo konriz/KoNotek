@@ -46,14 +46,23 @@ class Writer:
                 file.write(struct.pack('b', int(sample)))
 
     def __write(self, sign):
-        signal = SIGNAL_RULES[sign]
-        print('Writing ' + sign)
-        if signal.type == 'pause':
-            self.__write_signal(self.__generate_pause(signal.length))
-        else:
-            self.__write_signal(self.__generate_wave(signal.length))
-            self.__write_signal(self.__generate_pause())
+        try:
+            signal = SIGNAL_RULES[sign]
+            print('Writing ' + sign)
+            if signal.type == 'pause':
+                self.__write_signal(self.__generate_pause(signal.length))
+            else:
+                self.__write_signal(self.__generate_wave(signal.length))
+                self.__write_signal(self.__generate_pause())
+        except KeyError:
+            raise MorseException(sign)
 
     def write_morse_wav(self, morse):
         for sign in morse:
             self.__write(sign)
+
+
+class MorseException(Exception):
+
+    def __init__(self, sign):
+        self.sign = sign
