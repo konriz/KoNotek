@@ -18,14 +18,21 @@ def morse():
 
 @app.route("/morse/wave", methods=['POST'])
 def generate_wave():
-    morse_string = request.form['output']
+    string = request.form['output']
     date = datetime.now()
-    date_string = "{0}-{1}-{2}-{3}".format(date.month, date.day, date.hour, date.minute)
+    date_string = "{0}-{1}-{2}{3}{4}".format(date.month, date.day, date.hour, date.minute, date.second)
     filename = date_string + '.wav'
     writer = Writer(filename)
     try:
-        writer.write_morse_wav(morse_string)
-        flash('"{}" created with message "{}"'.format(filename, morse_string))
+        writer.write_morse_wav(string)
+        flash('"{}" created with message "{}"'.format(filename, string))
     except MorseException as e:
-        flash('Message "{}" is not valid - sign "{}" unsupported'.format(morse_string, e.sign))
+        try:
+            morse_string = translate(mode='to_code', input=string)
+            writer.write_morse_wav(morse_string)
+            flash('"{}" created with message "{}"'.format(filename, morse_string))
+        except MorseException as e:
+            flash('Message "{}" is not valid - sign "{}" unsupported'.format(string, e.sign))
+        except KeyError as e:
+            flash("Sign {e} not valid".format(e=e))
     return redirect(url_for('morse'))
